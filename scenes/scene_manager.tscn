@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6qf582541y3t"]
+
+[ext_resource type="Script" uid="uid://b0i8m8euvrrnx" path="res://scripts/scene_manager.gd" id="1_we8k5"]
+[ext_resource type="Script" uid="uid://boe57n7vd60op" path="res://scripts/components/input_component.gd" id="2_65mdo"]
+[ext_resource type="PackedScene" uid="uid://dhlep3ynjwswc" path="res://scenes/player.tscn" id="3_b81s6"]
+
+[node name="SceneManager" type="Node"]
+script = ExtResource("1_we8k5")
+metadata/_custom_type_script = "uid://b0i8m8euvrrnx"
+
+[node name="InputComponent" type="Node" parent="."]
+script = ExtResource("2_65mdo")
+metadata/_custom_type_script = "uid://boe57n7vd60op"
+
+[node name="ActiveScene" type="Node2D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("3_b81s6")]
+position = Vector2(6, -1)

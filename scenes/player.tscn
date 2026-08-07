@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://dhlep3ynjwswc"]
+
+[ext_resource type="Script" uid="uid://boe57n7vd60op" path="res://scripts/components/input_component.gd" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://bsmlg72rqbc7i" path="res://scripts/player/player.gd" id="1_dqkch"]
+[ext_resource type="Script" uid="uid://ci63dner1afn1" path="res://scripts/components/movement_component.gd" id="3_dqkch"]
+[ext_resource type="Texture2D" uid="uid://cellfbxmtaaio" path="res://assets/DS _ DSi - Pokemon Black 2 _ White 2 - Overworld - Rosa.png" id="4_dqkch"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tuyoq"]
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("input_component", "movement_component")]
+script = ExtResource("1_dqkch")
+input_component = NodePath("InputComponent")
+movement_component = NodePath("MovementComponent")
+speed = 1000.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_tuyoq")
+
+[node name="InputComponent" type="Node" parent="."]
+script = ExtResource("1_3vyb7")
+metadata/_custom_type_script = "uid://boe57n7vd60op"
+
+[node name="MovementComponent" type="Node" parent="." node_paths=PackedStringArray("body")]
+script = ExtResource("3_dqkch")
+body = NodePath("..")
+metadata/_custom_type_script = "uid://ci63dner1afn1"
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("4_dqkch")
+hframes = 7
+vframes = 4
+frame = 7
