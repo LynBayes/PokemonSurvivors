@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://06ob0wkc5ctp"]
+
+[ext_resource type="Script" uid="uid://dakp1mgj0r1i7" path="res://scripts/enemy/base_enemy.gd" id="1_h17bh"]
+[ext_resource type="Texture2D" uid="uid://dg0chmnoonrc0" path="res://icon.svg" id="2_fpxyv"]
+[ext_resource type="Script" uid="uid://ci63dner1afn1" path="res://scripts/components/movement_component.gd" id="3_lkcdx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fpxyv"]
+radius = 50.1597
+
+[node name="TestEnemy" type="CharacterBody2D" node_paths=PackedStringArray("movement_component")]
+script = ExtResource("1_h17bh")
+movement_component = NodePath("MovementComponent")
+metadata/_custom_type_script = "uid://dakp1mgj0r1i7"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_fpxyv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_fpxyv")
+
+[node name="MovementComponent" type="Node" parent="."]
+script = ExtResource("3_lkcdx")
+metadata/_custom_type_script = "uid://ci63dner1afn1"
